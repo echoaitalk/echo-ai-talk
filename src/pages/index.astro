@@ -5,11 +5,9 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 // Component Imports
-import CallToAction from '../components/CallToAction.astro';
 import Hero from '../components/Hero.astro';
 import Icon from '../components/Icon.astro';
 import Pill from '../components/Pill.astro';
-import LinePreview from '../components/LinePreview.astro';
 
 // Page section components
 import Skills from '../components/Skills.astro';
@@ -29,14 +27,14 @@ const projects = (await getCollection('work'))
       <header class="hero">
         <Hero
           title="ECHO AI TALK"
-          tagline="id venenatis a condimentum vitae. Dapibus ultrices in iaculis nunc."
+          tagline="Echo AI Talk is a dedicated platform for disseminating cutting-edge AI technological advancements. Our goal is to foster the spread of innovative AI research ideas, thereby enhancing community development and paving the way for the creation of beneficial and secure AI systems."
           align="start"
         >
-          <div class="roles">
+          <!-- <div class="roles">
             <Pill><Icon icon="code" size="1.33em" /> </Pill>
             <Pill><Icon icon="microphone-stage" size="1.33em" /> </Pill>
             <Pill><Icon icon="pencil-line" size="1.33em" /> </Pill>
-          </div>
+          </div> -->
         </Hero>
 
         <img alt="Logo" width="480" height="480" src="/assets/stock-2.jpg" />
@@ -44,28 +42,6 @@ const projects = (await getCollection('work'))
 
       <Skills />
     </div>
-
-    <main class="wrapper stack gap-20 lg:gap-48">
-      <section class="section with-background with-cta">
-        <header class="section-header stack gap-2 lg:gap-4">
-          <h3>Recent Talks</h3>
-          <p>Take a look below at some of our featured work.</p>
-        </header>
-
-        <div class="gallery">
-          <main class="wrapper stack gap-2">
-            {projects.map((project) => <LinePreview project={project} />)}
-          </main>
-        </div>
-
-        <div class="cta">
-          <CallToAction href="/work/">
-            View All
-            <Icon icon="arrow-right" size="1.2em" />
-          </CallToAction>
-        </div>
-      </section>
-    </main>
   </div>
 </BaseLayout>
 

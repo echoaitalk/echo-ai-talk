@@ -31,8 +31,8 @@ const { Content } = await entry.render();
     <div class="stack gap-15">
       <header>
         <div class="wrapper stack gap-2">
-          <a class="back-link" href="/work/"><Icon icon="arrow-left" /> Talk</a>
-          <Hero title={entry.data.title} align="start">
+          <a class="back-link" href="/work/"><Icon icon="arrow-left" />Talk</a>
+          <Hero title={entry.data.title} align="start" titleSize="small">
             <div class="details">
               <div class="tags">
                 {entry.data.tags.map((t) => <Pill>{t}</Pill>)}
@@ -67,7 +67,7 @@ const { Content } = await entry.render();
 
 <style>
   header {
-    padding-bottom: 2.5rem;
+    padding-bottom: 2rem;
     border-bottom: 1px solid var(--gray-800);
   }
 
@@ -91,8 +91,8 @@ const { Content } = await entry.render();
   .avatar {
     display: flex;
     img {
-      width: 5rem;
-      height: 5rem;
+      width: 3rem;
+      height: 3rem;
       border-radius: 50%;
     }
   }

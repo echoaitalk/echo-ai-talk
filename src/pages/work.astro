@@ -6,16 +6,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PortfolioPreview from '../components/PortfolioPreview.astro';
 import Hero from '../components/Hero.astro';
 
-const cvProjects = (
-  await getCollection('work', ({ data }) => {
-    return data.tags.includes('CV');
-  })
-).sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
-const nlpProjects = (
-  await getCollection('work', ({ data }) => {
-    return data.tags.includes('NLP');
-  })
-).sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+const Projects = (await getCollection('work')).sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
 ---
 
 <BaseLayout
@@ -24,16 +17,9 @@ const nlpProjects = (
 >
   <div class="stack gap-10">
     <main class="wrapper stack gap-2">
-      <Hero title="Talks" tagline="CV" align="start" />
+      <Hero title="Talks" align="start" />
       <div class="container">
-        {cvProjects.map((project) => <PortfolioPreview project={project} />)}
-      </div>
-    </main>
-    <main class="wrapper stack gap-2">
-      <Hero title="" tagline="NLP" align="start" />
-
-      <div class="container">
-        {nlpProjects.map((project) => <PortfolioPreview project={project} />)}
+        {Projects.map((project) => <PortfolioPreview project={project} />)}
       </div>
     </main>
   </div>
