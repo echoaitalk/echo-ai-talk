@@ -2,39 +2,40 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 import Hero from '../components/Hero.astro';
+import Portfolio from '../components/Portfolio.astro';
 ---
 
 <BaseLayout
   title="About | ECHO AI TALK"
-  description="About Jeanine White Lorem Ipsum"
+  description="About | ECHO AI TALK"
 >
   <div class="stack gap-20">
     <main class="wrapper about">
       <Hero
         title="About"
         tagline="tempor incididunt ut labore et dolore magna"
-      />
+      /><Hero title="Organizers" align="start" titleSize="small" />
 
-      <section>
-        <h2 class="section-title">Lorem ipsum</h2>
-        <div class="content">
-          <p>
-            Lorem ipsum dolor sit amet, <a href="https://astro.build/">Astro</a>
-            makes people happy. Sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua. Proin nibh nisl condimentum id venenatis a condimentum
-            vitae. Dapibus ultrices in iaculis nunc. Arcu odio ut sem nulla pharetra
-            diam sit amet. Diam quis enim lobortis scelerisque fermentum dui faucibus
-            in ornare.
-          </p>
-          <p>
-            Arcu dui vivamus arcu felis bibendum ut tristique et egestas. Eget
-            gravida cum sociis natoque penatibus. Cras fermentum odio eu feugiat
-            pretium nibh. Proin nibh nisl condimentum id venenatis. Porta nibh
-            venenatis cras sed felis eget velit. Id diam vel quam elementum
-            pulvinar etiam non.
-          </p>
-        </div>
-      </section>
+      <div class="container">
+        <Portfolio
+          name="incididunt"
+          organization="incididunt"
+          imgSrc="/assets/s1e02Avatar.jpg"
+        /><Portfolio
+          name="incididunt"
+          organization="incididunt"
+          imgSrc="/assets/s1e02Avatar.jpg"
+        />
+      </div>
+      <Hero title="Advisory Committee" align="start" titleSize="small" /><div
+        class="container"
+      >
+        <Portfolio
+          name="incididunt"
+          organization="tempor incididunt"
+          imgSrc="/assets/s1e02Avatar.jpg"
+        />
+      </div>
     </main>
   </div>
 
@@ -43,6 +44,10 @@ import Hero from '../components/Hero.astro';
       display: flex;
       flex-direction: column;
       gap: 3.5rem;
+    }
+    .container {
+      display: flex;
+      gap: 3rem;
     }
 
     img {
@@ -59,13 +64,11 @@ import Hero from '../components/Hero.astro';
     }
 
     .section-title {
-      grid-column-start: 1;
       font-size: var(--text-xl);
       color: var(--gray-0);
     }
 
     .content {
-      grid-column: 2 / 4;
     }
 
     .content :global(a) {
@@ -81,12 +84,9 @@ import Hero from '../components/Hero.astro';
 
     @media (min-width: 50em) {
       .about {
-        display: grid;
-        grid-template-columns: 1fr 60% 1fr;
       }
 
       .about > :global(:first-child) {
-        grid-column-start: 2;
       }
 
       section {

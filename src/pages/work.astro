@@ -11,10 +11,7 @@ const Projects = (await getCollection('work')).sort(
 );
 ---
 
-<BaseLayout
-  title="Talks"
-  description="Learn about Jeanine White's most recent projects"
->
+<BaseLayout title="Talks" description="Learn about Talks">
   <div class="stack gap-10">
     <main class="wrapper stack gap-2">
       <Hero title="Talks" align="start" />
@@ -22,12 +19,40 @@ const Projects = (await getCollection('work')).sort(
         {Projects.map((project) => <PortfolioPreview project={project} />)}
       </div>
     </main>
+    <div class="pagination-wrapper">
+      <a class="page-number pagination" href={`/work`}>1</a>
+    </div>
   </div>
+  <style>
+    .container {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .pagination-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, sans-serif;
+    }
+
+    .pagination-wrapper a {
+      text-decoration: none;
+      color: var(--accent-regular);
+      margin: 0 0.7rem;
+      font-size: var(--text-base);
+    }
+
+    .pagination {
+      padding: 0.5rem 1rem;
+      border-radius: 0.375rem;
+    }
+    .pagination:hover {
+      transition:
+        color var(--theme-transition),
+        background-color var(--theme-transition);
+      color: var(--gray-100);
+      background-color: var(--accent-subtle-overlay);
+    }
+  </style>
 </BaseLayout>
-<style>
-  .container {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-</style>

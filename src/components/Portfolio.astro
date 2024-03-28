@@ -1,0 +1,36 @@
+---
+interface Props {
+  name: string | undefined;
+  organization: string | undefined;
+  imgSrc: string | undefined;
+}
+const { name, organization, imgSrc } = Astro.props;
+---
+
+<div class="card">
+  <img src={imgSrc} loading="lazy" decoding="async" />
+  <div class="name">{name}</div>
+  <div class="organization">{organization}</div>
+</div>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  img {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+  }
+  .name {
+    font-size: var(--text-2xl);
+  }
+  .organization {
+    color: var(--gray-400);
+    font-size: var(--text-xl);
+  }
+  @media (min-width: 50em) {
+  }
+</style>
