@@ -3,21 +3,23 @@ interface Props {
   name: string | undefined;
   organization: string | undefined;
   imgSrc: string | undefined;
+  personPageLink: string | undefined;
 }
-const { name, organization, imgSrc } = Astro.props;
+const { name, organization, imgSrc, personPageLink } = Astro.props;
 ---
 
-<div class="card">
+<a class="link" href={personPageLink}>
   <img src={imgSrc} loading="lazy" decoding="async" />
   <div class="name">{name}</div>
-  <div class="organization">{organization}</div>
-</div>
+  <div class="organization">{organization}</div></a
+>
 
 <style>
-  .card {
+  .link {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-decoration: none;
   }
   img {
     width: 8rem;
@@ -26,6 +28,7 @@ const { name, organization, imgSrc } = Astro.props;
   }
   .name {
     font-size: var(--text-xl);
+    color: var(--gray-100);
   }
   .organization {
     color: var(--gray-400);
