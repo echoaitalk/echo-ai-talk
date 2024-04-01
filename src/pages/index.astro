@@ -30,11 +30,16 @@ const projects = (await getCollection('work'))
           tagline="Echo AI Talk is a dedicated platform for disseminating cutting-edge AI technological advancements. Our goal is to foster the spread of innovative AI research ideas, thereby enhancing community development and paving the way for the creation of beneficial and secure AI systems."
           align="start"
         >
-          <!-- <div class="roles">
-            <Pill><Icon icon="code" size="1.33em" /> </Pill>
-            <Pill><Icon icon="microphone-stage" size="1.33em" /> </Pill>
-            <Pill><Icon icon="pencil-line" size="1.33em" /> </Pill>
-          </div> -->
+          <div class="subs">
+            <a
+              href={'/subscribe'}
+              class="social"
+              title="Subscribe to our email newsletter to receive weekly notifications of the talks.
+          "
+            >
+              <Pill><Icon icon="rss-logo" size="1.33em" />Subscribe </Pill></a
+            >
+          </div>
         </Hero>
 
         <img alt="Logo" width="480" height="480" src="/assets/stock-2.png" />
@@ -55,6 +60,10 @@ const projects = (await getCollection('work'))
 
   .roles {
     display: none;
+  }
+  .social {
+    display: flex;
+    width: fit-content;
   }
 
   .hero img {

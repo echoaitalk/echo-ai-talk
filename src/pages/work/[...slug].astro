@@ -24,6 +24,12 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+let date = entry.data.publishDate;
+let year = date.getFullYear();
+let month = date.getMonth() + 1;
+let strDate = date.getDate();
+
+const dateString = `${year}/${month}/${strDate}`;
 ---
 
 <BaseLayout title={entry.data.title} description={entry.data.speaker}>
@@ -33,17 +39,20 @@ const { Content } = await entry.render();
         <div class="wrapper stack gap-2">
           <a class="back-link" href="/work/"><Icon icon="arrow-left" />Talk</a>
           <Hero title={entry.data.title} align="start" titleSize="small">
-            <div class="details">
-              <div class="tags">
-                {entry.data.tags.map((t) => <Pill>{t}</Pill>)}
-              </div>
-              <p class="speaker">{entry.data.speaker}</p>
+            <div class="author">
               <div class="avatar">
                 {
                   entry.data.avatarImg && (
                     <img src={entry.data.avatarImg} alt={'avatar'} />
                   )
                 }
+              </div>
+              <div class="speaker">{entry.data.speaker}</div>
+              <div class="dateString">{dateString}</div>
+            </div>
+            <div class="details">
+              <div class="tags">
+                {entry.data.tags.map((t) => <Pill>{t}</Pill>)}
               </div>
             </div>
           </Hero>
@@ -120,6 +129,16 @@ const { Content } = await entry.render();
     box-shadow: var(--shadow-sm);
     background: var(--gradient-subtle);
     border: 1px solid var(--gray-800);
+  }
+  .author {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    padding-left: 0.5rem;
+  }
+  .dateString {
+    flex-grow: 1;
+    text-align: right;
   }
 
   .content :global(blockquote) {
