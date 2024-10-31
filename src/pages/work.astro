@@ -1,23 +1,38 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 
-import PortfolioPreview from '../components/PortfolioPreview.astro';
-import Hero from '../components/Hero.astro';
+import PortfolioPreview from "../components/PortfolioPreview.astro";
+import Hero from "../components/Hero.astro";
 
-const Projects = (await getCollection('work')).sort(
-  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+const Projects = (await getCollection("work")).sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
+);
+
+const Projects2 = (await getCollection("work2")).sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
 );
 ---
 
 <BaseLayout title="Talks" description="Learn about Talks">
   <div class="stack gap-10">
     <main class="wrapper stack gap-2">
-      <Hero title="Talks" align="start" />
-      <div class="container">
-        {Projects.map((project) => <PortfolioPreview project={project} />)}
-      </div>
+      <!-- talks-s2 区域（最新内容） -->
+      <section>
+        <Hero title="Talks - S2" align="start" />
+        <div class="container">
+          {Projects2.map((project) => <PortfolioPreview project={project} />)}
+        </div>
+      </section>
+
+      <!-- talks-s1 区域（已有内容） -->
+      <section>
+        <Hero title="Talks - S1" align="start" />
+        <div class="container">
+          {Projects.map((project) => <PortfolioPreview project={project} />)}
+        </div>
+      </section>
     </main>
     <div class="pagination-wrapper">
       <a class="page-number pagination" href={`/work`}>1</a>
