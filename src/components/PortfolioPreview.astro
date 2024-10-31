@@ -2,7 +2,8 @@
 import type { CollectionEntry } from 'astro:content';
 
 interface Props {
-  project: CollectionEntry<'work'>;
+  // project: CollectionEntry<'work'>;
+  project: CollectionEntry<'work'> | CollectionEntry<'work2'>; // 接受两种数据类型
 }
 
 const { data, slug } = Astro.props.project;
@@ -12,7 +13,7 @@ let month = date.getMonth() + 1;
 let strDate = date.getDate();
 
 const dateString = `${year}-${month}-${strDate}`;
-const basePath = data.basePath || 'work'; // 如果没有指定 basePath，则默认为 work
+const basePath = 'basePath' in data ? data.basePath : 'work';// 如果没有指定 basePath，则默认为 work
 ---
 
 <!-- <a class="card" href={`/work/${slug}`}> -->
@@ -26,7 +27,7 @@ const basePath = data.basePath || 'work'; // 如果没有指定 basePath，则�
   <div class="info">
     <span class="title">{data.title}</span>
   <div class="tags">
-    {data.tags.map((tag=><span class="tag">{tag}</span>))}</div>
+    {data.tags.map(((tag: unknown)=><span class="tag">{tag}</span>))}</div>
     <div class="author">
       <img
         class="avatar"
