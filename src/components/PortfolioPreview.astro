@@ -16,8 +16,8 @@ const dateString = `${year}-${month}-${strDate}`;
 const basePath = 'basePath' in data ? data.basePath : 'work';// 如果没有指定 basePath，则默认为 work
 ---
 
-<!-- <a class="card" href={`/work/${slug}`}> -->
-<a class="card" href={`/${basePath}/${slug}`}>
+<a class="card" href={`/work/${slug}`}>
+<!-- <a class="card" href={`/${basePath}/${slug}`}> -->
   <img
     src={data.img}
     alt={data.img_alt || ''}
