@@ -6,21 +6,22 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import PortfolioPreview from "../components/PortfolioPreview.astro";
 import Hero from "../components/Hero.astro";
 
-// const Projects = (await getCollection("work")).sort(
-//   (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
-// );
+// const Projects = (await getCollection("work"))
+//   .filter((project) => project.data.publishDate) // 确保 publishDate 存在
+//   .sort((a, b) => new Date(b.data.publishDate).valueOf() - new Date(a.data.publishDate).valueOf());
 
-// const Projects2 = (await getCollection("work2")).sort(
-//   (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
-// );
+// const Projects2 = (await getCollection("work2"))
+//   .filter((project) => project.data.publishDate) // 确保 publishDate 存在
+//   .sort((a, b) => new Date(b.data.publishDate).valueOf() - new Date(a.data.publishDate).valueOf());
 const Projects = (await getCollection("work"))
   .filter((project) => project.data.publishDate) // 确保 publishDate 存在
+  .filter((project) => project.id.startsWith("S1")) // 通过名字前缀 "S1" 区分
   .sort((a, b) => new Date(b.data.publishDate).valueOf() - new Date(a.data.publishDate).valueOf());
 
-const Projects2 = (await getCollection("work2"))
+const Projects2 = (await getCollection("work"))
   .filter((project) => project.data.publishDate) // 确保 publishDate 存在
+  .filter((project) => project.id.startsWith("S2")) // 通过名字前缀 "S2" 区分
   .sort((a, b) => new Date(b.data.publishDate).valueOf() - new Date(a.data.publishDate).valueOf());
-
 ---
 
 <BaseLayout title="Talks" description="Learn about Talks">
