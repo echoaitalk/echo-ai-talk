@@ -29,7 +29,7 @@ const Projects2 = (await getCollection("work"))
     <main class="wrapper stack gap-2">
       <!-- talks-s2 区域（最新内容） -->
       <section>
-        <Hero title="Talks - S2" align="start" />
+        <Hero title="Season 2" align="start" />
         <div class="container">
           {Projects2.map((project) => <PortfolioPreview project={project} />)}
         </div>
@@ -37,7 +37,7 @@ const Projects2 = (await getCollection("work"))
 
       <!-- talks-s1 区域（已有内容） -->
       <section>
-        <Hero title="Talks - S1" align="start" />
+        <Hero title="Season 1" align="start" />
         <div class="container">
           {Projects.map((project) => <PortfolioPreview project={project} />)}
         </div>
