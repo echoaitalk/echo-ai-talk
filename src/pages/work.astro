@@ -16,19 +16,27 @@ import Hero from "../components/Hero.astro";
 const Projects = (await getCollection("work"))
   .filter((project) => project.data.publishDate) // 确保 publishDate 存在
   .filter((project) => project.id.startsWith("S1")) // 通过名字前缀 "S1" 区分
-  .sort((a, b) => new Date(b.data.publishDate).valueOf() - new Date(a.data.publishDate).valueOf());
+  .sort(
+    (a, b) =>
+      new Date(b.data.publishDate).valueOf() -
+      new Date(a.data.publishDate).valueOf(),
+  );
 
 const Projects2 = (await getCollection("work"))
   .filter((project) => project.data.publishDate) // 确保 publishDate 存在
   .filter((project) => project.id.startsWith("S2")) // 通过名字前缀 "S2" 区分
-  .sort((a, b) => new Date(b.data.publishDate).valueOf() - new Date(a.data.publishDate).valueOf());
+  .sort(
+    (a, b) =>
+      new Date(b.data.publishDate).valueOf() -
+      new Date(a.data.publishDate).valueOf(),
+  );
 ---
 
 <BaseLayout title="Talks" description="Learn about Talks">
   <div class="stack gap-10">
     <main class="wrapper stack gap-2">
       <!-- talks-s2 区域（最新内容） -->
-      <section>
+      <section class="season2-section">
         <Hero title="Season 2" align="start" />
         <div class="container">
           {Projects2.map((project) => <PortfolioPreview project={project} />)}
@@ -52,6 +60,7 @@ const Projects2 = (await getCollection("work"))
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
+      margin-top: 1rem;
     }
     .pagination-wrapper {
       display: flex;
@@ -76,6 +85,10 @@ const Projects2 = (await getCollection("work"))
         background-color var(--theme-transition);
       color: var(--gray-100);
       background-color: var(--accent-subtle-overlay);
+    }
+
+    .season2-section {
+      margin-bottom: 30px; /* 或其他合适的间隙大小 */
     }
   </style>
 </BaseLayout>
